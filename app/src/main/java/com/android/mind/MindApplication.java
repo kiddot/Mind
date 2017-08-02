@@ -1,6 +1,9 @@
 package com.android.mind;
 
 
+import com.alibaba.android.arouter.*;
+import com.alibaba.android.arouter.BuildConfig;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.common.BaseApplication;
 
 /**
@@ -12,6 +15,10 @@ public class MindApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        if (BuildConfig.DEBUG) {
+            ARouter.openDebug();
+            ARouter.openLog();
+        }
+        ARouter.init(this);
     }
 }
