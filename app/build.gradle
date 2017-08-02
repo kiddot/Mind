@@ -40,4 +40,5 @@ dependencies {
 //        //others
 //    }
     compile project(path: ':common')
+    annotationProcessor rootProject.ext.arouterCompiler
 }
