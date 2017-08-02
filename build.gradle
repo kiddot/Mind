@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
-
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -15,9 +15,39 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
+        //Add the JitPack repository
+        maven { url "https://jitpack.io" }
+        //支持arr包
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+// Define versions in a single place
+//时间：2017.2.13；每次修改版本号都要添加修改时间
+ext {
+    // Sdk and tools
+    //localBuildToolsVersion是gradle.properties中的数据
+    buildToolsVersion = localBuildToolsVersion
+    compileSdkVersion = 23
+    minSdkVersion = 19
+    targetSdkVersion = 23
+    versionCode = 1
+    versionName = "1.0"
+    javaVersion = JavaVersion.VERSION_1_7
+
+    // App dependencies version
+    //supportLibraryVersion = "23.4.0"
+
+    //需检查升级版本
+
+    //arouter
+    arouterApi = 'com.alibaba:arouter-api:1.2.1.1'
+    arouterCompiler = 'com.alibaba:arouter-compiler:1.1.2.1'
 }
