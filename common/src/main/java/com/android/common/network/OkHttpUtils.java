@@ -1,6 +1,11 @@
 package com.android.common.network;
 
 import com.android.common.network.builder.GetBuilder;
+import com.android.common.network.builder.HeadBuilder;
+import com.android.common.network.builder.OtherRequestBuilder;
+import com.android.common.network.builder.PostFileBuilder;
+import com.android.common.network.builder.PostFormBuilder;
+import com.android.common.network.builder.PostStringBuilder;
 import com.android.common.network.callback.Callback;
 import com.android.common.network.request.RequestCall;
 import com.android.common.network.utils.Platform;
