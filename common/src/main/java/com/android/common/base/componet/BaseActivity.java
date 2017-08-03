@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.android.common.base.mvp.BaseMvpPresenter;
 import com.android.common.base.thread.ThreadPoolConst;
 import com.android.common.base.thread.ThreadPoolManager;
 import com.android.common.base.util.DialogFragmentHelper;
@@ -19,7 +20,7 @@ import java.util.concurrent.Executor;
 import static com.android.common.BaseApplication.getContext;
 
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompatActivity {
 
     //以ClassName作为TAG
     private static final String TAG = BaseActivity.class.getSimpleName();
@@ -46,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 window.setAttributes(params);
             }
         }
-        getLayoutBinding();
+        setContentView(getContentViewId());
         //setContentView(getLayoutId());
         //ButterKnife.bind(this);
         if (mToast == null && getContext() != null) mToast = new Toastor(getContext());
@@ -56,7 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /*
     * 重写该方法来设置布局Id
     */
-    protected abstract void getLayoutBinding();
+    protected abstract int getContentViewId();
 
     /*
     * 初始化

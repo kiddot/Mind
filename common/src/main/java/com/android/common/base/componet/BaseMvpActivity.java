@@ -9,7 +9,7 @@ import com.android.common.base.mvp.BaseMvpPresenter;
  * Created by kiddo on 17-8-3.
  */
 
-public abstract class BaseMvpActivity<P extends BaseMvpPresenter> extends BaseActivity {
+public abstract class BaseMvpActivity<P extends BaseMvpPresenter> extends BaseActivity<P> {
     private static final String TAG = "BaseMvpActivity";
 
     protected P mPresenter;
