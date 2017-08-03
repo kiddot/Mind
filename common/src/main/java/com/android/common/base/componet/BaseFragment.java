@@ -15,11 +15,6 @@ import com.android.common.base.util.Toastor;
 
 import org.greenrobot.eventbus.EventBus;
 
-
-/**
- * Created by kiddo on 17-3-31.
- */
-
 public abstract class BaseFragment extends Fragment {
     private Toastor mToast;
 
