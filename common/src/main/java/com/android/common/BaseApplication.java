@@ -1,7 +1,6 @@
 package com.android.common;
 
 import android.app.Application;
-import android.content.Context;
 
 /**
  * Created by kiddo on 17-8-2.
