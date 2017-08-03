@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.android.common.base.thread.ThreadPoolConst;
+import com.android.common.base.thread.ThreadPoolManager;
 import com.android.common.base.util.DialogFragmentHelper;
 import com.android.common.base.util.HandleUtil;
 import com.android.common.base.util.Toastor;
