@@ -19,10 +19,6 @@ import java.util.concurrent.Executor;
 import static com.android.common.BaseApplication.getContext;
 
 
-/**
- *
- * Created by kiddo on 17-1-9.
- */
 public abstract class BaseActivity extends AppCompatActivity {
 
     //以ClassName作为TAG
