@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.common.base.componet.BaseMvpActivity;
 import com.android.main.R;
 import com.android.main.R2;
@@ -35,7 +36,6 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     protected void init(LoginPresenter presenter, Bundle savedInstanceState) {
-        initView();
 
     }
 
@@ -44,16 +44,12 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         return new LoginPresenter(this, this);
     }
 
-    private void initView() {
-        EventBus.getDefault().register(this);
-    }
-
     public void login(View view) {
         getPresenter().login();
     }
 
     public void signUp(View view) {
-//        RegisterActivity.startActivity(this);
+        ARouter.getInstance().build("/main/registerActivity").navigation();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -68,12 +64,6 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
             showToast("登录失败，请检查用户名和密码是否有误");
             mLoginBtnLogin.setProgress(-1);
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 
     @Override

@@ -15,6 +15,8 @@ import com.android.common.base.util.DialogFragmentHelper;
 import com.android.common.base.util.HandleUtil;
 import com.android.common.base.util.Toastor;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.concurrent.Executor;
 
 import static com.android.common.BaseApplication.getContext;
@@ -52,6 +54,7 @@ public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompat
         //ButterKnife.bind(this);
         if (mToast == null && getContext() != null) mToast = new Toastor(getContext());
         init(savedInstanceState);
+        EventBus.getDefault().register(this);
     }
 
     /*
@@ -91,6 +94,12 @@ public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompat
             mLoadingDialog.dismiss();
             mLoadingDialog = null;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
 }

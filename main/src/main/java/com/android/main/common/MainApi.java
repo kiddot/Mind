@@ -1,4 +1,4 @@
-package com.android.main.login;
+package com.android.main.common;
 
 import android.util.Log;
 
@@ -14,11 +14,11 @@ import java.io.IOException;
 import okhttp3.Response;
 
 /**
- * Created by kiddo on 17-8-3.
+ * Created by kiddo on 17-8-4.
  */
 
-public class LoginApi {
-    private static final String TAG = "LoginApi";
+public class MainApi {
+    private static final String TAG = "MainApi";
 
     private static final String LOGIN_URL = AppConstant.Url + "login.php";
 
@@ -41,4 +41,25 @@ public class LoginApi {
         }
     }
 
+    public static User register(String username, String password, String sex, String email, String phone){
+        GetBuilder builder = new GetBuilder()
+                .url(LOGIN_URL)
+                .addParams("format", "register")
+                .addParams("username", username)
+                .addParams("password", password)
+                .addParams("sex", sex)
+                .addParams("email", email)
+                .addParams("phone", phone);
+        RequestCall call = builder.build();
+        try {
+            Response response = call.execute();
+            String result = response.body().string();
+            GsonUser gsonUser = GsonUtil.GsonToBean(result, GsonUser.class);
+            Log.d(TAG, "login: " + result + "code:" + gsonUser.getCode());
+            return gsonUser.getUser();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

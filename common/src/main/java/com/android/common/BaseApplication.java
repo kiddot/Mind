@@ -2,6 +2,7 @@ package com.android.common;
 
 import android.app.Application;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.common.network.OkHttpUtils;
 import com.android.common.network.log.LoggerInterceptor;
 
@@ -24,6 +25,15 @@ public class BaseApplication extends Application {
         super.onCreate();
         mBaseApplication = this;
         initOkHttp();
+        initARouter();
+    }
+
+    private void initARouter() {
+        if (com.alibaba.android.arouter.BuildConfig.DEBUG) {
+            ARouter.openDebug();
+            ARouter.openLog();
+        }
+        ARouter.init(this);
     }
 
     private void initOkHttp(){

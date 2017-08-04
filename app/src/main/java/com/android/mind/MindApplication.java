@@ -14,10 +14,10 @@ public class MindApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (BuildConfig.DEBUG) {
-            ARouter.openDebug();
-            ARouter.openLog();
-        }
-        ARouter.init(this);
+//        if (BuildConfig.DEBUG) {
+//            ARouter.openDebug();
+//            ARouter.openLog();
+//        }
+//        ARouter.init(this);
     }
 }
