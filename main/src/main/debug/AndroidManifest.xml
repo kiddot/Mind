@@ -6,7 +6,7 @@
 
 
     <application
-        android:name=".MainApplication"
+        android:name=".debug.MainApplication"
         android:allowBackup="true"
         android:supportsRtl="true"
         android:icon="@drawable/login_iv_avatar"
@@ -23,5 +23,6 @@
 
         <activity android:name=".register.RegisterActivity"/>
 
+        <activity android:name=".main.MainActivity"/>
     </application>
 </manifest>

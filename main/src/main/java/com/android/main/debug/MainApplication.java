@@ -1,4 +1,4 @@
-package com.android.main;
+package com.android.main.debug;
 
 import com.android.common.BaseApplication;
 

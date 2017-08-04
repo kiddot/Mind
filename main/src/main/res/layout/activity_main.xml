@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/tools">
+
+
+    <!--<include-->
+        <!--android:id="@+id/title_main"-->
+        <!--layout="@layout/title_layout">-->
+    <!--</include>-->
+
+    <com.flavienlaurent.discrollview.lib.DiscrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:discrollve="http://schemas.android.com/apk/res-auto"
+        android:scrollbars="none"
+        >
+
+        <com.flavienlaurent.discrollview.lib.DiscrollViewContent
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="#7adfb8"
+                android:textColor="@android:color/black"
+                android:padding="25dp"
+                android:textSize="72sp"
+                tools:visibility="gone"
+                android:gravity="center"
+                android:fontFamily="serif"
+                android:text="Do you love cheese?" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#007788"
+                discrollve:discrollve_alpha="true"
+                discrollve:discrollve_threshold="0.3" />
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="120dp"
+                discrollve:discrollve_alpha="true"
+                discrollve:discrollve_translation="fromLeft|fromBottom"
+                android:src="@drawable/cheese1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                discrollve:discrollve_fromBgColor="#88EE66"
+                discrollve:discrollve_toBgColor="#000000" />
+
+            <ImageView
+                android:layout_width="220dp"
+                android:layout_height="110dp"
+                android:layout_gravity="right"
+                android:src="@drawable/cheese2"
+                discrollve:discrollve_translation="fromRight" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="When the cheese comes out everybody's happy pecorino red leicester"
+                android:textSize="18sp"
+                discrollve:discrollve_alpha="true"
+                discrollve:discrollve_translation="fromBottom" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ilovecheese_heart"
+                discrollve:discrollve_scaleX="true"
+                discrollve:discrollve_scaleY="true"  />
+
+            <com.android.main.main.DiscrollvablePurpleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_purple"
+                android:orientation="vertical"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/purpleView1"
+                    android:alpha="0"
+                    android:layout_width="200dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/cheese1"
+                    android:translationX="-150dp" />
+
+                <ImageView
+                    android:id="@+id/purpleView2"
+                    android:alpha="0"
+                    android:layout_width="220dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/cheese2"
+                    android:translationX="100dp" />
+
+            </com.android.main.main.DiscrollvablePurpleLayout>
+
+            <com.android.main.main.DiscrollvablePurpleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_light"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/pathView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="When the cheese comes out everybody's happy pecorino red leicester"
+                    android:textSize="18sp" />
+            </com.android.main.main.DiscrollvablePurpleLayout>
+
+            <com.android.main.main.DiscrollvablePurpleLayout
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:background="@android:color/holo_red_dark"
+                tools:visibility="gone">
+
+                <TextView
+                    android:id="@+id/redView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="When the cheese comes out everybody's happy pecorino red leicester. The big cheese cheese on toast ricotta cheesy grin smelly cheese manchego chalk and cheese macaroni cheese."
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/redView2"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:alpha="0.0"
+                    android:src="@drawable/cheese3"
+                    android:scaleX="0.1"
+                    android:scaleY="0.1"
+                    android:translationY="50dp" />
+
+            </com.android.main.main.DiscrollvablePurpleLayout>
+
+            <com.android.main.main.DiscrollvablePurpleLayout
+                android:layout_width="match_parent"
+                tools:visibility="gone"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_green_light">
+
+                <TextView
+                    android:id="@+id/greenView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="50dp"
+                    android:fontFamily="serif"
+                    android:translationY="-50dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="Finally ..."
+                    android:textSize="36sp" />
+
+            </com.android.main.main.DiscrollvablePurpleLayout>
+
+            <com.android.main.main.DiscrollvablePurpleLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/lastView1"
+                    android:translationX="-200dp"
+                    android:translationY="-200dp"
+                    android:alpha="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ilovecheese_i" />
+
+                <ImageView
+                    android:id="@+id/lastView2"
+                    android:translationX="200dp"
+                    android:translationY="200dp"
+                    android:alpha="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/lastView3"
+                    android:src="@drawable/ilovecheese_heart" />
+
+                <ImageView
+                    android:id="@+id/lastView3"
+                    android:translationY="200dp"
+                    android:alpha="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_below="@+id/lastView1"
+                    android:src="@drawable/ilovecheese_cheese" />
+
+            </com.android.main.main.DiscrollvablePurpleLayout>
+
+        </com.flavienlaurent.discrollview.lib.DiscrollViewContent>
+
+    </com.flavienlaurent.discrollview.lib.DiscrollView>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        fab:menu_fab_size="normal"
+        fab:menu_showShadow="true"
+        fab:menu_shadowColor="#66000000"
+        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowXOffset="1dp"
+        fab:menu_shadowYOffset="3dp"
+        fab:menu_colorNormal="#DA4336"
+        fab:menu_colorPressed="#E75043"
+        fab:menu_colorRipple="#99FFFFFF"
+        fab:menu_animationDelayPerItem="50"
+        fab:menu_icon="@drawable/fab_add"
+        fab:menu_buttonSpacing="0dp"
+        fab:menu_labels_margin="0dp"
+        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        fab:menu_labels_paddingTop="4dp"
+        fab:menu_labels_paddingRight="8dp"
+        fab:menu_labels_paddingBottom="4dp"
+        fab:menu_labels_paddingLeft="8dp"
+        fab:menu_labels_padding="8dp"
+        fab:menu_labels_textColor="#FFFFFF"
+        fab:menu_labels_textSize="14sp"
+        fab:menu_labels_cornerRadius="3dp"
+        fab:menu_labels_colorNormal="#333333"
+        fab:menu_labels_colorPressed="#444444"
+        fab:menu_labels_colorRipple="#66FFFFFF"
+        fab:menu_labels_showShadow="true"
+        fab:menu_labels_singleLine="false"
+        fab:menu_labels_ellipsize="none"
+        fab:menu_labels_maxLines="-1"
+        fab:menu_labels_style="@style/YourCustomLabelsStyle"
+        fab:menu_labels_position="left"
+        fab:menu_openDirection="up"
+        fab:menu_backgroundColor="@android:color/transparent"
+        fab:menu_fab_label="your_label_here"
+        fab:menu_fab_show_animation="@anim/my_show_animation"
+        fab:menu_fab_hide_animation="@anim/my_hide_animation">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_iv_avatar"
+            fab:fab_size="mini"
+            fab:fab_label="Menu item 1" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_iv_avatar"
+            fab:fab_size="mini"
+            fab:fab_label="Menu item 1" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_iv_avatar"
+            fab:fab_size="mini"
+            fab:fab_label="Menu item 1" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item_fourth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_iv_avatar"
+            fab:fab_size="mini"
+            fab:fab_label="Menu item 1" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</RelativeLayout>
+

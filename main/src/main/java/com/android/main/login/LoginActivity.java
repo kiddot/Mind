@@ -58,8 +58,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         Log.d(TAG, "onReceiveLoginEvent: " + isSuccess);
         if (isSuccess) {
             mLoginBtnLogin.setProgress(100);
-            //MainActivity.startActivity(this);
-            //finish();
+            ARouter.getInstance().build("/main/mainActivity").navigation();
+            finish();
         } else {
             showToast("登录失败，请检查用户名和密码是否有误");
             mLoginBtnLogin.setProgress(-1);
