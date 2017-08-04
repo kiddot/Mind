@@ -9,6 +9,8 @@ import com.android.common.base.thread.ThreadPoolManager;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.Executor;
 
+import bolts.Task;
+
 /**
  * Created by kiddo on 17-8-3.
  */
@@ -20,7 +22,7 @@ public class BaseMvpPresenter<V extends BaseMvpView> implements Presenter<V> {
 
     protected static Executor sHTTPExecutor = ThreadPoolManager.getInstance().getThreadPool(ThreadPoolConst.THREAD_TYPE_SIMPLE_HTTP);
     protected static Executor sWORKExecutor = ThreadPoolManager.getInstance().getThreadPool(ThreadPoolConst.THREAD_TYPE_WORK);
-
+    protected static Executor sUIExecutor = Task.UI_THREAD_EXECUTOR;
 
     public BaseMvpPresenter(Context context, V view) {
         attachView(context, view);

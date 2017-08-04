@@ -1,12 +1,14 @@
 package com.android.main.login;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.android.common.base.componet.BaseMvpActivity;
 import com.android.main.R;
 import com.android.main.R2;
 import com.dd.processbutton.FlatButton;
+import com.dd.processbutton.iml.ActionProcessButton;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -28,12 +30,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     BiuEditText mPassword;
     @BindView(R2.id.login_btn_register)
     FlatButton mRegister;
-
-
-    @Override
-    protected int getContentViewId() {
-        return R.layout.activity_login;
-    }
+    @BindView(R2.id.login_btn_login)
+    ActionProcessButton mLoginBtnLogin;
 
     @Override
     protected void init(LoginPresenter presenter, Bundle savedInstanceState) {
@@ -61,15 +59,15 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onReceiveLoginEvent(LoginEvent event) {
         boolean isSuccess = event.isSuccess();
-//        Log.d(TAG, "onReceiveLoginEvent: " + isSuccess);
-//        if (isSuccess){
-//            mLoginBinding.loginBtnLogin.setProgress(100);
-//            MainActivity.startActivity(this);
-//            finish();
-//        } else {
-//            showToast("登录失败，请检查用户名和密码是否有误");
-//            mLoginBinding.loginBtnLogin.setProgress(-1);
-//        }
+        Log.d(TAG, "onReceiveLoginEvent: " + isSuccess);
+        if (isSuccess) {
+            mLoginBtnLogin.setProgress(100);
+            //MainActivity.startActivity(this);
+            //finish();
+        } else {
+            showToast("登录失败，请检查用户名和密码是否有误");
+            mLoginBtnLogin.setProgress(-1);
+        }
     }
 
     @Override
@@ -93,6 +91,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.activity_login;
     }
 
 }

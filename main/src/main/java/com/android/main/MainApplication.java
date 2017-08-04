@@ -7,7 +7,5 @@ import com.android.common.BaseApplication;
  */
 
 public class MainApplication extends BaseApplication{
-    private MainApplication() {
 
-    }
 }
