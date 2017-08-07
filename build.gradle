@@ -9,6 +9,9 @@ buildscript {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.1.0'
+
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2'
         //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -42,7 +45,7 @@ ext {
     minSdkVersion = 19
     targetSdkVersion = 23
     versionCode = 1
-    versionName = "1.0"
+    versionName = "1.0.1"
     javaVersion = JavaVersion.VERSION_1_7
 
     // App dependencies version

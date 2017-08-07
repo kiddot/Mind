@@ -53,3 +53,5 @@ dependencies {
     compile 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
 }
+
+apply from: "bintrayUpload.gradle"

@@ -23,7 +23,6 @@ android {
         }
     }
 
-
     sourceSets {
         main {
             if (isModule.toBoolean()) {
@@ -48,6 +47,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
     compile project(path: ':common')
+    //compile 'com.android.common:common:unspecified'
+    //compile(name:'common-release', ext:'aar')
     annotationProcessor rootProject.ext.arouterCompiler
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
