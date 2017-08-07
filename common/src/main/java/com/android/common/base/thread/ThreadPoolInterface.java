@@ -14,10 +14,9 @@ public interface ThreadPoolInterface {
 
     /**
      *
-     * @description:获取指定类型的线程池，如果不存在则创建
-     * @param @param ThreadPoolType
+     * 获取指定类型的线程池，如果不存在则创建
+     * @param threadPoolType
      * @return BaseThreadPool
-     * @throws
      */
     public BaseThreadPool getThreadPool(int threadPoolType);
 

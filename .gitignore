@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+/common/local.properties
+/main/local.properties

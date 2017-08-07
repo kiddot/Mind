@@ -72,33 +72,33 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-//task javadoc(type: Javadoc) {
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
 
 // This generates javadoc.jar
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
 
 artifacts {
-    //archives javadocJar
+    archives javadocJar
     archives sourcesJar
 }
 
-// javadoc configuration
-//javadoc {
-//    options{
-//        encoding "UTF-8"
-//        charSet 'UTF-8'
-//        author true
-//        version projectVersionName
-//        links "http://docs.oracle.com/javase/7/docs/api"
-//        title javadocName
-//    }
-//}
+ javadoc configuration
+javadoc {
+    options{
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version projectVersionName
+        links "http://docs.oracle.com/javase/7/docs/api"
+        title javadocName
+    }
+}
 
 // bintray configuration
 bintray {
@@ -106,9 +106,8 @@ bintray {
     key = bintrayApikey
     configurations = ['archives']
     pkg {
-        repo = "common"//在这里必须和仓库名字一致
+        repo = "main"//在这里必须和仓库名字一致
         name = projectName
-        version projectVersionName
         websiteUrl = projectSiteUrl
         vcsUrl = projectGitUrl
         licenses = ["Apache-2.0"]
