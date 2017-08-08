@@ -54,7 +54,6 @@ public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompat
         //ButterKnife.bind(this);
         if (mToast == null && getContext() != null) mToast = new Toastor(getContext());
         init(savedInstanceState);
-        EventBus.getDefault().register(this);
     }
 
     /*

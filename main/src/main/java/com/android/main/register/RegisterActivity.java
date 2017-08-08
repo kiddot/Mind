@@ -41,7 +41,7 @@ public class RegisterActivity extends BaseMvpActivity<RegisterPresenter> impleme
 
     @Override
     protected void init(RegisterPresenter presenter, Bundle savedInstanceState) {
-
+        EventBus.getDefault().register(this);
     }
 
     @Override

@@ -36,7 +36,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     protected void init(LoginPresenter presenter, Bundle savedInstanceState) {
-
+        EventBus.getDefault().register(this);
     }
 
     @Override
