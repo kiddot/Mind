@@ -12,5 +12,7 @@
         android:theme="@style/AppTheme"
         >
 
+        <activity android:name="com.android.teamtask.task.TaskActivity"/>
+
     </application>
 </manifest>

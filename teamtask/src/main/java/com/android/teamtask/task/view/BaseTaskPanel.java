@@ -137,7 +137,7 @@ public abstract class BaseTaskPanel extends CardView implements ISlidingUpPanel<
         return mSlope;
     }
 
-    public abstract void setWeatherModel(Task weather);
+    public abstract void setTaskModel(Task task);
 
     @Override
     public Parcelable onSaveInstanceState() {
