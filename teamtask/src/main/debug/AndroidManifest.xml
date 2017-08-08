@@ -6,6 +6,7 @@
 
 
     <application
+        android:name=".debug.TaskApplication"
         android:allowBackup="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
