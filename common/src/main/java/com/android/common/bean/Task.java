@@ -13,6 +13,7 @@ public class Task {
     private String endDate;
     private String sender;
     private String receiver;
+    private String teamName;
     public String getReceiver() {
         return this.receiver;
     }
@@ -43,14 +44,21 @@ public class Task {
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
-    @Generated(hash = 1445057552)
+    public String getTeamName() {
+        return this.teamName;
+    }
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+    @Generated(hash = 1582377739)
     public Task(String startDate, String content, String endDate, String sender,
-            String receiver) {
+            String receiver, String teamName) {
         this.startDate = startDate;
         this.content = content;
         this.endDate = endDate;
         this.sender = sender;
         this.receiver = receiver;
+        this.teamName = teamName;
     }
     @Generated(hash = 733837707)
     public Task() {
