@@ -47,7 +47,7 @@
         tools:background="#03A9F4">
 
         <TextView
-            android:id="@+id/panel_city_text"
+            android:id="@+id/panel_tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -59,7 +59,7 @@
             tools:text="标题"/>
 
         <TextView
-            android:id="@+id/panel_temp_now_text"
+            android:id="@+id/panel_tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -67,7 +67,7 @@
             android:textColor="@android:color/white"
             android:textSize="30sp"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintTop_toBottomOf="@+id/panel_city_text"
+            app:layout_constraintTop_toBottomOf="@+id/panel_tv_title"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -280,7 +280,7 @@
         tools:alpha="1.0">
 
         <TextView
-            android:id="@+id/panel_city_text_collapse"
+            android:id="@+id/panel_tv_bar_sender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -289,7 +289,7 @@
             tools:text="发布者"/>
 
         <TextView
-            android:id="@+id/panel_weather_desc_text_collapse"
+            android:id="@+id/panel_tv_bar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -298,7 +298,7 @@
             tools:text="标题"/>
 
         <TextView
-            android:id="@+id/panel_temp_now_collapse"
+            android:id="@+id/panel_tv_bar_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -314,7 +314,7 @@
             android:layout_weight="1"/>
 
         <ImageView
-            android:id="@+id/panel_weather_icon_collapse"
+            android:id="@+id/panel_iv_bar_icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="8dp"

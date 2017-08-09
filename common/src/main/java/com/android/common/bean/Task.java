@@ -8,6 +8,7 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class Task {
+    private String title;
     private String startDate;
     private String content;
     private String endDate;
@@ -50,9 +51,16 @@ public class Task {
     public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
-    @Generated(hash = 1582377739)
-    public Task(String startDate, String content, String endDate, String sender,
-            String receiver, String teamName) {
+    public String getTitle() {
+        return this.title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    @Generated(hash = 780831610)
+    public Task(String title, String startDate, String content, String endDate,
+            String sender, String receiver, String teamName) {
+        this.title = title;
         this.startDate = startDate;
         this.content = content;
         this.endDate = endDate;

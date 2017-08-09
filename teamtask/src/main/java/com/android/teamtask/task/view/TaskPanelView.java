@@ -15,8 +15,6 @@ import com.android.teamtask.R;
 import com.xw.repo.supl.ISlidingUpPanel;
 import com.xw.repo.supl.SlidingUpPanelLayout;
 
-import java.util.List;
-
 /**
  * Created by kiddo on 17-8-8.
  */
@@ -27,28 +25,15 @@ public class TaskPanelView extends BaseTaskPanel implements View.OnClickListener
     private View mExpendLayout;
     private ImageView mCollapseImg;
     private ImageView mSettingsImg;
-    private TextView mCityText;
-    private ImageView mWeatherIcon;
-    private TextView mWeatherDescText;
-    private TextView mTempNowText;
-    private TextView mAqiDescText;
-    private ImageView mDay1WeatherIcon;
-    private TextView mDay1WeatherDescText;
-    private TextView mDay1TempRangeText;
-    private ImageView mDay2WeatherIcon;
-    private TextView mDay2WeatherDescText;
-    private TextView mDay2TempRangeText;
-    private ImageView mDay3WeatherIcon;
-    private TextView mDay3WeatherDescText;
-    private TextView mDay3TempRangeText;
-
+    private TextView mTitleText;
     private View mCollapseLayout;
-    private TextView mCityTextCollapse;
-    private TextView mWeatherDescTextCollapse;
-    private TextView mTempNowTextCollapse;
-    private ImageView mWeatherIconCollapse;
+    private TextView mSender;
+    private TextView mBarTitle;
+    private TextView mBarTime;
+    private ImageView mBarIcon;
+    private TextView mTvContent;
 
-    private int mWeatherTypeCode;
+    private int mWeatherTypeCode = 1;
 
     public TaskPanelView(Context context) {
         this(context, null);
@@ -67,25 +52,13 @@ public class TaskPanelView extends BaseTaskPanel implements View.OnClickListener
         mExpendLayout = findViewById(R.id.panel_expend_layout);
         mCollapseImg = (ImageView) findViewById(R.id.panel_collapse_img);
         mSettingsImg = (ImageView) findViewById(R.id.panel_settings_img);
-        mCityText = (TextView) findViewById(R.id.panel_city_text);
-//        mWeatherIcon = (ImageView) findViewById(R.id.panel_weather_icon);
-//        mWeatherDescText = (TextView) findViewById(R.id.panel_weather_desc_text);
-//        mTempNowText = (TextView) findViewById(R.id.panel_temp_now_text);
-//        mAqiDescText = (TextView) findViewById(R.id.panel_air_condition_text);
-//        mDay1WeatherIcon = (ImageView) findViewById(R.id.day1_weather_icon);
-//        mDay1WeatherDescText = (TextView) findViewById(R.id.day1_weather_desc_text);
-//        mDay1TempRangeText = (TextView) findViewById(R.id.day1_temp_range_text);
-//        mDay2WeatherIcon = (ImageView) findViewById(R.id.day2_weather_icon);
-//        mDay2WeatherDescText = (TextView) findViewById(R.id.day2_weather_desc_text);
-//        mDay2TempRangeText = (TextView) findViewById(R.id.day2_temp_range_text);
-//        mDay3WeatherIcon = (ImageView) findViewById(R.id.day3_weather_icon);
-//        mDay3WeatherDescText = (TextView) findViewById(R.id.day3_weather_desc_text);
-//        mDay3TempRangeText = (TextView) findViewById(R.id.day3_temp_range_text);
+        mTitleText = (TextView) findViewById(R.id.panel_tv_title);
+        mTvContent = (TextView) findViewById(R.id.panel_tv_content);
         mCollapseLayout = findViewById(R.id.panel_collapse_layout);
-        mCityTextCollapse = (TextView) findViewById(R.id.panel_city_text_collapse);
-        mWeatherDescTextCollapse = (TextView) findViewById(R.id.panel_weather_desc_text_collapse);
-        mTempNowTextCollapse = (TextView) findViewById(R.id.panel_temp_now_collapse);
-        mWeatherIconCollapse = (ImageView) findViewById(R.id.panel_weather_icon_collapse);
+        mSender = (TextView) findViewById(R.id.panel_tv_bar_sender);
+        mBarTitle = (TextView) findViewById(R.id.panel_tv_bar_title);
+        mBarTime = (TextView) findViewById(R.id.panel_tv_bar_time);
+        mBarIcon = (ImageView) findViewById(R.id.panel_iv_bar_icon);
         mCollapseImg.setOnClickListener(this);
         mSettingsImg.setOnClickListener(this);
 
@@ -182,82 +155,11 @@ public class TaskPanelView extends BaseTaskPanel implements View.OnClickListener
         if (task == null)
             return;
 
-        mCityText.setText("茂名");
-        mCityTextCollapse.setText("茂名");
-        mWeatherTypeCode = 1;
-        if (mWeatherTypeCode == 1) {
-            mWeatherIcon.setImageResource(R.drawable.svg_ic_sunny_cloudy);
-            mWeatherIconCollapse.setImageResource(R.drawable.svg_ic_sunny_cloudy);
-            mWeatherDescText.setText("多云");
-            mWeatherDescTextCollapse.setText("多云");
-        } else if (mWeatherTypeCode == 2) {
-//            mWeatherIcon.setImageResource(R.drawable.svg_ic_rainy);
-//            mWeatherIconCollapse.setImageResource(R.drawable.svg_ic_rainy);
-//            mWeatherDescText.setText("雨");
-//            mWeatherDescTextCollapse.setText("雨");
-        } else {
-//            mWeatherIcon.setImageResource(R.drawable.svg_ic_sunny);
-//            mWeatherIconCollapse.setImageResource(R.drawable.svg_ic_sunny);
-//            mWeatherDescText.setText("晴");
-//            mWeatherDescTextCollapse.setText("晴");
-        }
-        mTempNowText.setText("22");
-        mTempNowTextCollapse.setText("22");
-        mTempNowTextCollapse.append("℃");
-        //mAqiDescText.setText(weather.getAqiDesc());
-
-//        List<Task> forecasts = task.getForecasts();
-//        if (forecasts != null && !forecasts.isEmpty()) {
-//            Task forecast;
-//
-//            forecast = forecasts.get(0);
-//            if (forecast != null) {
-//                if (forecast.getCode() == 1) {
-//                    mDay1WeatherIcon.setImageResource(R.drawable.svg_ic_sunny_cloudy);
-//                    mDay1WeatherDescText.setText("多云");
-//                } else if (forecast.getCode() == 2) {
-//                    mDay1WeatherIcon.setImageResource(R.drawable.svg_ic_rainy);
-//                    mDay1WeatherDescText.setText("雨");
-//                } else {
-//                    mDay1WeatherIcon.setImageResource(R.drawable.svg_ic_sunny);
-//                    mDay1WeatherDescText.setText("晴");
-//                }
-//                String range = forecast.getTempMin() + "℃ ~ " + forecast.getTempMax() + "℃";
-//                mDay1TempRangeText.setText(range);
-//            }
-//
-//            forecast = forecasts.get(1);
-//            if (forecast != null) {
-//                if (forecast.getCode() == 1) {
-//                    mDay2WeatherIcon.setImageResource(R.drawable.svg_ic_sunny_cloudy);
-//                    mDay2WeatherDescText.setText("多云");
-//                } else if (forecast.getCode() == 2) {
-//                    mDay2WeatherIcon.setImageResource(R.drawable.svg_ic_rainy);
-//                    mDay2WeatherDescText.setText("雨");
-//                } else {
-//                    mDay2WeatherIcon.setImageResource(R.drawable.svg_ic_sunny);
-//                    mDay2WeatherDescText.setText("晴");
-//                }
-//                String range = forecast.getTempMin() + "℃ ~ " + forecast.getTempMax() + "℃";
-//                mDay2TempRangeText.setText(range);
-//            }
-//
-//            forecast = forecasts.get(2);
-//            if (forecast != null) {
-//                if (forecast.getCode() == 1) {
-//                    mDay3WeatherIcon.setImageResource(R.drawable.svg_ic_sunny_cloudy);
-//                    mDay3WeatherDescText.setText("多云");
-//                } else if (forecast.getCode() == 2) {
-//                    mDay3WeatherIcon.setImageResource(R.drawable.svg_ic_rainy);
-//                    mDay3WeatherDescText.setText("雨");
-//                } else {
-//                    mDay3WeatherIcon.setImageResource(R.drawable.svg_ic_sunny);
-//                    mDay3WeatherDescText.setText("晴");
-//                }
-//                String range = forecast.getTempMin() + "℃ ~ " + forecast.getTempMax() + "℃";
-//                mDay3TempRangeText.setText(range);
-//            }
-//        }
+        mTitleText.setText(task.getTitle());
+        mBarTime.setText(task.getStartDate());
+        mTvContent.setText(task.getContent());
+        mSender.setText(task.getSender());
+        mBarTitle.setText(task.getTitle());
 
         checkVisibilityOfViews();
     }
