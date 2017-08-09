@@ -15,6 +15,7 @@ public class Task {
     private String sender;
     private String receiver;
     private String teamName;
+    private int priority;
     public String getReceiver() {
         return this.receiver;
     }
@@ -57,9 +58,15 @@ public class Task {
     public void setTitle(String title) {
         this.title = title;
     }
-    @Generated(hash = 780831610)
+    public int getPriority() {
+        return this.priority;
+    }
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+    @Generated(hash = 1022503555)
     public Task(String title, String startDate, String content, String endDate,
-            String sender, String receiver, String teamName) {
+            String sender, String receiver, String teamName, int priority) {
         this.title = title;
         this.startDate = startDate;
         this.content = content;
@@ -67,6 +74,7 @@ public class Task {
         this.sender = sender;
         this.receiver = receiver;
         this.teamName = teamName;
+        this.priority = priority;
     }
     @Generated(hash = 733837707)
     public Task() {

@@ -13,11 +13,12 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
+import com.android.common.base.componet.ISlidingUpPanel;
+import com.android.common.base.componet.SlidingUpPanelLayout;
 import com.android.common.bean.Task;
-import com.xw.repo.supl.ISlidingUpPanel;
-import com.xw.repo.supl.SlidingUpPanelLayout;
 
-import static com.xw.repo.supl.SlidingUpPanelLayout.COLLAPSED;
+import static com.android.common.base.componet.SlidingUpPanelLayout.COLLAPSED;
+
 
 /**
  * Created by kiddo on 17-8-8.

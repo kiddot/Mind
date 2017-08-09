@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.common.base.componet.ISlidingUpPanel;
+import com.android.common.base.componet.SlidingUpPanelLayout;
 import com.android.common.bean.Task;
 import com.android.teamtask.R;
-import com.xw.repo.supl.ISlidingUpPanel;
-import com.xw.repo.supl.SlidingUpPanelLayout;
 
 /**
  * Created by kiddo on 17-8-8.
@@ -32,8 +32,7 @@ public class TaskPanelView extends BaseTaskPanel implements View.OnClickListener
     private TextView mBarTime;
     private ImageView mBarIcon;
     private TextView mTvContent;
-
-    private int mWeatherTypeCode = 1;
+    private int mPriority;
 
     public TaskPanelView(Context context) {
         this(context, null);
@@ -160,14 +159,14 @@ public class TaskPanelView extends BaseTaskPanel implements View.OnClickListener
         mTvContent.setText(task.getContent());
         mSender.setText(task.getSender());
         mBarTitle.setText(task.getTitle());
-
+        mPriority = task.getPriority();
         checkVisibilityOfViews();
     }
 
     private void checkVisibilityOfViews() {
-        if (mWeatherTypeCode == 1) {
+        if (mPriority == 1) {
             mContentLayout.setBackgroundColor(Color.parseColor("#80DEEA"));
-        } else if (mWeatherTypeCode == 2) {
+        } else if (mPriority == 2) {
             mContentLayout.setBackgroundColor(Color.parseColor("#78909C"));
         } else {
             mContentLayout.setBackgroundColor(Color.parseColor("#03A9F4"));
