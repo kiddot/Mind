@@ -7,11 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".task.TaskActivity">
-    <!--<ScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-        <!---->
-    <!--</ScrollView>-->
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bg_layout"
@@ -20,7 +15,7 @@
         android:background="@drawable/avg_task_background">
 
         <com.xw.repo.VectorCompatTextView
-            android:id="@+id/add_city_text"
+            android:id="@+id/task_tv_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -29,11 +24,28 @@
             android:drawablePadding="8dp"
             android:gravity="center"
             android:text="添加城市"
+            android:onClick="addTask"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             app:drawableTopCompat="@drawable/svg_task_add"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/task_tv_next"
+            android:layout_width="80dp"
+            android:onClick="next"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toRightOf="@+id/task_tv_add"
+            android:layout_height="80dp" />
+
+        <Button
+            android:id="@+id/task_tv_pre"
+            android:layout_width="80dp"
+            android:onClick="pre"
+            android:layout_marginTop="50dp"
+            app:layout_constraintRight_toLeftOf="@+id/task_tv_add"
+            android:layout_height="80dp" />
     </android.support.constraint.ConstraintLayout>
 </com.android.common.base.componet.SlidingUpPanelLayout>

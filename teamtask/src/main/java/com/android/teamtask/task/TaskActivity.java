@@ -2,6 +2,7 @@ package com.android.teamtask.task;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 
 import com.android.common.base.componet.BaseMvpActivity;
@@ -32,7 +33,7 @@ import static com.android.common.base.componet.SlidingUpPanelLayout.HIDDEN;
 
 public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements TaskContract.View {
     private static final String TAG = "TaskActivity";
-    @BindView(R2.id.add_city_text)
+    @BindView(R2.id.task_tv_add)
     VectorCompatTextView mAddCityText;
     @BindView(R2.id.sliding_up_panel_layout)
     SlidingUpPanelLayout mSlidingUpPanelLayout;
@@ -137,7 +138,7 @@ public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements Task
 
     private void initData() {
         tasks = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 6; i++) {
             Task task = new Task("你猜", "2017-8-2", "内容", "2017-8-5", "sender", "receiver", "topview" , i);
             tasks.add(task);
         }
@@ -158,5 +159,17 @@ public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements Task
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    public void addTask(View view){
+        Log.d(TAG, "addTask: ");
+    }
+
+    public void next(View view){
+        Log.d(TAG, "next: ");
+    }
+
+    public void pre(View view){
+        Log.d(TAG, "pre: ");
     }
 }
