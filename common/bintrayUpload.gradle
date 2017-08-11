@@ -106,7 +106,7 @@ bintray {
     key = bintrayApikey
     configurations = ['archives']
     pkg {
-        repo = "base"//在这里必须和仓库名字一致
+        repo = "common"//在这里必须和仓库名字一致
         name = projectName
         version projectVersionName
         websiteUrl = projectSiteUrl
