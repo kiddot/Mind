@@ -31,13 +31,15 @@ import static com.android.common.base.componet.SlidingUpPanelLayout.HIDDEN;
  * Created by kiddo on 17-8-8.
  */
 
-public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements TaskContract.View {
+public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements TaskContract.View,
+            TaskAdapter.BasePanelListener{
     private static final String TAG = "TaskActivity";
     @BindView(R2.id.task_tv_add)
     VectorCompatTextView mAddCityText;
     @BindView(R2.id.sliding_up_panel_layout)
     SlidingUpPanelLayout mSlidingUpPanelLayout;
-    private List<Task> tasks;
+    private List<Task> mTasks;
+    private TaskAdapter mAdapter;
 
     @Override
     protected void init(TaskPresenter presenter, Bundle savedInstanceState) {
@@ -91,56 +93,16 @@ public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements Task
                 }
             }
         });
-        mSlidingUpPanelLayout.setAdapter(new SlidingUpPanelLayout.Adapter() {
-            @Override
-            public int getItemCount() {
-                return tasks.size();
-            }
-
-            @NonNull
-            @Override
-            public ISlidingUpPanel onCreateSlidingPanel(int position) {
-                TaskPanelView panel = new TaskPanelView(TaskActivity.this);
-                panel.setFloor(tasks.size() - position);
-                panel.setPanelHeight(tasks.size() == 1 ? Dp2Px.dp2px(120) : Dp2Px.dp2px(80));
-                if (position == 0) {
-                    panel.setSlideState(EXPANDED);
-                    panel.setEnabled(false);
-                } else {
-                    panel.setSlideState(HIDDEN);
-                    panel.setEnabled(true);
-                }
-
-                return panel;
-            }
-
-            @Override
-            public void onBindView(final ISlidingUpPanel panel, int position) {
-                if (tasks.size() == 0)
-                    return;
-
-                BaseTaskPanel BasePanel = (BaseTaskPanel) panel;
-                BasePanel.setTaskModel(tasks.get(position));
-                BasePanel.setClickable(true);
-                BasePanel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (panel.getSlideState() != EXPANDED) {
-                            mSlidingUpPanelLayout.expandPanel();
-                        } else {
-                            mSlidingUpPanelLayout.collapsePanel();
-                        }
-                    }
-                });
-            }
-        });
+        mAdapter = new TaskAdapter(this, mTasks);
+        mAdapter.setBasePanelListener(this);
+        mSlidingUpPanelLayout.setAdapter(mAdapter);
     }
 
     private void initData() {
-        tasks = new ArrayList<>();
+        mTasks = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             Task task = new Task("你猜", "2017-8-2", "内容", "2017-8-5", "sender", "receiver", "topview" , i);
-            tasks.add(task);
+            mTasks.add(task);
         }
     }
 
@@ -167,9 +129,29 @@ public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements Task
 
     public void next(View view){
         Log.d(TAG, "next: ");
+        mTasks.clear();
+        queryNewTask();
+        mSlidingUpPanelLayout.setAdapter(mAdapter);
+    }
+
+    private void queryNewTask() {
+        for (int i = 0; i < 3; i++) {
+            Task task = new Task("你猜", "2017-8-2", "内容", "2017-8-5", "sender", "receiver", "topview" , i);
+            mTasks.add(task);
+        }
+
     }
 
     public void pre(View view){
         Log.d(TAG, "pre: ");
+    }
+
+    @Override
+    public void clickBasePanel(int state) {
+        if (state != EXPANDED){
+            mSlidingUpPanelLayout.expandPanel();
+        } else {
+            mSlidingUpPanelLayout.collapsePanel();
+        }
     }
 }
