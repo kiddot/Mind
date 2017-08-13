@@ -14,7 +14,7 @@ import com.android.teamtask.task.view.TaskPanelView;
 import java.util.List;
 
 import static com.android.common.base.componet.SlidingUpPanelLayout.EXPANDED;
-import static com.android.common.base.componet.SlidingUpPanelLayout.HIDDEN;
+import static com.android.common.base.componet.SlidingUpPanelLayout.COLLAPSED;
 
 /**
  * Created by kiddo on 17-8-10.
@@ -42,13 +42,15 @@ public class TaskAdapter extends SlidingUpPanelLayout.Adapter {
         TaskPanelView panel = new TaskPanelView(mContext);
         panel.setFloor(mTasks.size() - position);
         panel.setPanelHeight(mTasks.size() == 1 ? Dp2Px.dp2px(120) : Dp2Px.dp2px(80));
-        if (position == 0) {
-            panel.setSlideState(EXPANDED);
-            panel.setEnabled(false);
-        } else {
-            panel.setSlideState(HIDDEN);
-            panel.setEnabled(true);
-        }
+//        if (position == 0) {
+//            panel.setSlideState(EXPANDED);
+//            panel.setEnabled(false);
+//        } else {
+//            panel.setSlideState(HIDDEN);
+//            panel.setEnabled(true);
+//        }
+        panel.setSlideState(COLLAPSED);
+        panel.setEnabled(true);
 
         return panel;
     }
