@@ -1,19 +1,16 @@
-package com.android.teamtask.task;
+package com.android.teamtask.task.main;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 
 import com.android.common.base.componet.BaseMvpActivity;
 import com.android.common.base.componet.ISlidingUpPanel;
 import com.android.common.base.componet.SlidingUpPanelLayout;
-import com.android.common.base.util.Dp2Px;
 import com.android.common.bean.Task;
 import com.android.teamtask.R;
 import com.android.teamtask.R2;
 import com.android.teamtask.task.view.BaseTaskPanel;
-import com.android.teamtask.task.view.TaskPanelView;
 import com.xw.repo.VectorCompatTextView;
 
 import java.util.ArrayList;
