@@ -7,7 +7,8 @@ import android.os.Environment;
  */
 
 public class AppConstant {
-    public static final String Url = "http://120.25.235.70/Record/";
+    //public static final String Url = "http://120.25.235.70/Record/";
+    public static final String Url = "http://192.168.1.4:63343/Record/";
 
     public final static String SAVE_PATH = Environment.getExternalStorageDirectory() + "/record/";
 

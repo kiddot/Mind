@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.common.base.componet.BaseMvpActivity;
 import com.android.common.base.componet.ISlidingUpPanel;
 import com.android.common.base.componet.SlidingUpPanelLayout;
 import com.android.common.bean.Task;
 import com.android.teamtask.R;
 import com.android.teamtask.R2;
+import com.android.teamtask.task.publish.PublishActivity;
 import com.android.teamtask.task.view.BaseTaskPanel;
 import com.xw.repo.VectorCompatTextView;
 
@@ -27,7 +30,7 @@ import static com.android.common.base.componet.SlidingUpPanelLayout.HIDDEN;
 /**
  * Created by kiddo on 17-8-8.
  */
-
+@Route(path = "/task/taskActivity")
 public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements TaskContract.View,
             TaskAdapter.BasePanelListener{
     private static final String TAG = "TaskActivity";
@@ -122,6 +125,8 @@ public class TaskActivity extends BaseMvpActivity<TaskPresenter> implements Task
 
     public void addTask(View view){
         Log.d(TAG, "addTask: ");
+        //ARouter.getInstance().build("/task/publishActivity").navigation();
+        PublishActivity.startActivity(this);
     }
 
     public void next(View view){

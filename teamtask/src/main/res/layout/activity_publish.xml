@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:background="@drawable/publish_theme"
-        android:paddingTop="20dp"
+        android:paddingTop="30dp"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,35 +42,13 @@
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
-                <!--<TextView-->
-                <!--android:id="@+id/sendMsg_tv_receiver"-->
-                <!--style="?android:attr/textViewStyle"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="30"-->
-                <!--android:background="@null"-->
-                <!--android:clickable="false"-->
-                <!--android:drawableBottom="@drawable/edittext"-->
-                <!--android:ellipsize="marquee"-->
-                <!--android:enabled="false"-->
-                <!--android:focusable="true"-->
-                <!--android:focusableInTouchMode="true"-->
-                <!--android:layout_gravity="center_vertical"-->
-                <!--android:gravity="center_vertical"-->
-                <!--android:inputType="textLongMessage"-->
-                <!--android:marqueeRepeatLimit="marquee_forever"-->
-                <!--android:singleLine="true"-->
-                <!--android:hint="请添加日记标题"-->
-                <!--android:textColorHint="@color/light_gray"-->
-                <!--android:textColor="#c7c7c7"-->
-                <!--android:textSize="19sp"/>-->
-
                 <me.james.biuedittext.BiuEditText
                     android:id="@+id/write_et_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:hint="请添加任务标题"
+                    android:layout_marginRight="15dp"
                     android:textColorHint="@color/theme_dark_color_taki"
                     android:textColor="@color/theme_dark_color_taki"
                     app:biu_duration="800"
@@ -141,7 +119,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:onClick="onClickTime"
+                    android:onClick="onClickPriority"
                     android:textSize="14sp"
                     android:gravity="center"
                     android:textStyle="bold"
@@ -163,7 +141,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
-                    android:onClick="onClickEmotion"
+                    android:onClick="onClickReceiver"
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -183,6 +161,7 @@
             android:layout_marginLeft="13dp"
             android:layout_marginRight="13dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
             card_view:cardCornerRadius="7dp"
             card_view:cardElevation="7dp"
             android:clickable="true"
@@ -219,11 +198,12 @@
                             android:background="@null"
                             android:gravity="top"
                             android:hint="请在此输入内容..."
+                            android:textColorHint="@color/theme_dark_color_taki"
                             android:inputType="textMultiLine"
                             android:textColor="@color/theme_dark_color_taki"
                             android:lineSpacingExtra="5dp"
                             android:maxLength="500"
-                            android:minHeight="400dp"
+                            android:minHeight="300dp"
                             android:textSize="18sp"/>
                     </LinearLayout>
 

@@ -7,6 +7,7 @@
         <activity android:name="com.android.teamtask.task.main.TaskActivity"/>
 
 
+        <activity android:name=".task.publish.PublishActivity"/>
     </application>
 
 </manifest>
