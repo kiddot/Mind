@@ -49,11 +49,13 @@ public class TaskApi {
         return false;
     }
 
-    public static void getTask(String username, String teamName){
+    public static void getTask(String username, String teamName, int page, int limit){
         GetBuilder builder = new GetBuilder()
                 .url(TASK_URL)
                 .addParams("format", "save")
                 .addParams("username", username)
+                .addParams("page", String.valueOf(page))
+                .addParams("limit", String.valueOf(limit))
                 .addParams("teamName", teamName);
         RequestCall call = builder.build();
         try {
