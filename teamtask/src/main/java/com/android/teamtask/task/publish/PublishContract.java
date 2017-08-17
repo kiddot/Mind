@@ -19,5 +19,7 @@ public interface PublishContract {
         public Presenter(Context context, View view) {
             super(context, view);
         }
+
+        abstract void publishTask();
     }
 }

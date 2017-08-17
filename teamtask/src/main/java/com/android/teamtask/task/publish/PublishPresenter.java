@@ -10,4 +10,9 @@ public class PublishPresenter extends PublishContract.Presenter {
     public PublishPresenter(Context context, PublishContract.View view) {
         super(context, view);
     }
+
+    @Override
+    void publishTask() {
+
+    }
 }
