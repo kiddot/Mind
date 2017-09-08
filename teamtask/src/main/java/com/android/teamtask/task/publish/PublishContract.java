@@ -11,7 +11,14 @@ import com.android.common.base.mvp.BaseMvpView;
 
 public interface PublishContract {
     interface View extends BaseMvpView<Presenter>{
-
+        String getUserName();
+        String getTitle();
+        String getStartDate();
+        String getEndDate();
+        String getContent();
+        String getSender();
+        String getReceiver();
+        String getTeamName();
     }
 
     abstract class Presenter extends BaseMvpPresenter<View>{
