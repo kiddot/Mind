@@ -26,7 +26,7 @@ public class PublishPresenter extends PublishContract.Presenter {
         Task.call(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                return TaskApi.publishTask(getView().getUserName(), getView().getTitle(),
+                return TaskApi.publishTask(getView().getUserName(), getView().getTitleLine(),
                         getView().getStartDate(), getView().getEndDate(), getView().getContent(),
                         getView().getTeamName(), getView().getSender(), getView().getReceiver(), 0);
             }

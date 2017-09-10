@@ -7,21 +7,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.android.common.base.componet.BaseMvpActivity;
 import com.android.common.base.mvp.BaseMvpPresenter;
+import com.android.common.manager.UserManager;
 import com.android.teamtask.R;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog.OnDateSetListener;
 
 import java.util.Calendar;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by kiddo on 17-8-17.
  */
 public class PublishActivity extends BaseMvpActivity implements PublishContract.View,
-        DatePickerDialog.OnDateSetListener {
+        OnDateSetListener {
 
     private static final String TAG = "PublishActivity";
     @BindView(R.id.write_tv_date)
@@ -77,9 +77,42 @@ public class PublishActivity extends BaseMvpActivity implements PublishContract.
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    public String getUserName() {
+        return UserManager.getInstance(this).getUserName();
+    }
+
+    @Override
+    public String getTitleLine() {
+        return null;
+    }
+
+    @Override
+    public String getStartDate() {
+        return null;
+    }
+
+    @Override
+    public String getEndDate() {
+        return null;
+    }
+
+    @Override
+    public String getContent() {
+        return null;
+    }
+
+    @Override
+    public String getSender() {
+        return null;
+    }
+
+    @Override
+    public String getReceiver() {
+        return null;
+    }
+
+    @Override
+    public String getTeamName() {
+        return null;
     }
 }

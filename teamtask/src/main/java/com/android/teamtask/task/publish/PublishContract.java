@@ -12,7 +12,7 @@ import com.android.common.base.mvp.BaseMvpView;
 public interface PublishContract {
     interface View extends BaseMvpView<Presenter>{
         String getUserName();
-        String getTitle();
+        String getTitleLine();
         String getStartDate();
         String getEndDate();
         String getContent();

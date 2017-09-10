@@ -20,12 +20,11 @@ import okhttp3.Response;
 public class MainApi {
     private static final String TAG = "MainApi";
 
-    private static final String LOGIN_URL = AppConstant.Url + "login.php";
+    private static final String LOGIN_URL = AppConstant.Url + "/user/login";
 
     public static User login(String userName, String passWord){
         GetBuilder builder = new GetBuilder()
                 .url(LOGIN_URL)
-                .addParams("format", "login")
                 .addParams("username", userName)
                 .addParams("password", passWord);
         RequestCall call = builder.build();
@@ -41,10 +40,12 @@ public class MainApi {
         }
     }
 
+    private static final String REGISTER_URL = AppConstant.Url + "/user/register";
+
+
     public static User register(String username, String password, String sex, String email, String phone){
         GetBuilder builder = new GetBuilder()
-                .url(LOGIN_URL)
-                .addParams("format", "register")
+                .url(REGISTER_URL)
                 .addParams("username", username)
                 .addParams("password", password)
                 .addParams("sex", sex)
