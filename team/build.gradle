@@ -1,4 +1,9 @@
-apply plugin: 'com.android.library'
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -42,5 +47,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(path: ':common')
     compile 'com.jakewharton:butterknife:8.5.1'
-
+    compile 'com.alexvasilkov:foldable-layout:1.2.1'
+    compile 'com.alexvasilkov:android-commons:2.0.2'
 }
