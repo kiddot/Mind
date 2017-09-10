@@ -1,6 +1,6 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fitsSystemWindows="true"
-    >
+    xmlns:fab="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true">
 
     <ListView
         android:id="@+id/list_view"
@@ -77,5 +77,19 @@
         android:id="@+id/unfoldable_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/write_fab_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/svg_task_add"
+        fab:fab_colorNormal="@color/app_primary"
+        fab:fab_colorPressed="@color/app_primary_pressed"
+        fab:fab_colorRipple="@color/app_ripple"/>
 
 </merge>

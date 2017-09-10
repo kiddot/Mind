@@ -4,6 +4,8 @@
         android:supportsRtl="true">
 
         <activity android:name=".team.main.TeamDetailActivity"/>
+        <activity android:name=".team.create.CreateTeamActivity"/>
+
 
     </application>
 
