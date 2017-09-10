@@ -31,27 +31,22 @@ import butterknife.BindView;
  */
 
 public class TeamDetailActivity extends BaseMvpActivity {
-    @BindView(R2.id.list_view)
-    ListView listView;
-    @BindView(R2.id.touch_interceptor_view)
-    View touchInterceptorView;
-    @BindView(R2.id.details_layout)
-    LinearLayout detailsLayout;
-    @BindView(R2.id.unfoldable_view)
-    UnfoldableView unfoldableView;
-
     private View listTouchInterceptor;
+    private View detailsLayout;
+    private UnfoldableView unfoldableView;
 
     @Override
     protected void init(BaseMvpPresenter presenter, Bundle savedInstanceState) {
+        ListView listView = Views.find(this, R.id.list_view);
         listView.setAdapter(new TeamDetailAdapter(getTeamList()));
 
+        listTouchInterceptor = Views.find(this, R.id.touch_interceptor_view);
         listTouchInterceptor.setClickable(false);
 
+        detailsLayout = Views.find(this, R.id.details_layout);
         detailsLayout.setVisibility(View.INVISIBLE);
 
-        Bitmap glance = BitmapFactory.decodeResource(getResources(), R.drawable.unfold_glance);
-        unfoldableView.setFoldShading(new GlanceFoldShading(glance));
+        unfoldableView = Views.find(this, R.id.unfoldable_view);
 
         unfoldableView.setOnFoldingListener(new UnfoldableView.SimpleFoldingListener() {
             @Override
@@ -118,6 +113,16 @@ public class TeamDetailActivity extends BaseMvpActivity {
         description.setText(builder.build());
 
         unfoldableView.unfold(coverView, detailsLayout);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (unfoldableView != null
+                && (unfoldableView.isUnfolded() || unfoldableView.isUnfolding())) {
+            unfoldableView.foldBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 }

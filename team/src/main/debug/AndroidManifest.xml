@@ -4,7 +4,15 @@
     <application android:allowBackup="true"
         android:label="@string/app_name"
         android:name=".debug.TeamApplication"
+        android:theme="@style/AppTheme"
         android:supportsRtl="true">
+
+        <activity android:name=".team.main.TeamDetailActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
