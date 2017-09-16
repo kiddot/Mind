@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.common.BuildConfig;
+import com.android.common.base.componet.BaseActivity;
 import com.android.tph.api.Client;
 import com.android.tph.api.ClientListener;
 import com.android.tph.client.ClientConfig;
@@ -38,7 +39,7 @@ public class InitPush implements ClientListener{
      * @param allocServer
      * @param userId
      */
-    public void initPush(Context context, String allocServer, String userId) {
+    public void initPush(Context context, String allocServer, String userId, String deviceId) {
         //公钥由服务端提供和私钥对应
         String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCghPCWCobG8nTD24juwSVataW7iViRxcTkey/B792VZEhuHjQvA3cAJgx2Lv8GnX8NIoShZtoCg3Cx6ecs+VEPD2fBcg2L4JK7xldGpOJ3ONEAyVsLOttXZtNXvyDZRijiErQALMTorcgi79M5uVX9/jMv2Ggb2XAeZhlLD28fHwIDAQAB";
 
@@ -53,7 +54,7 @@ public class InitPush implements ClientListener{
                 .setAllotServer(allocServer)
                 .setServerHost(serverHost)
                 .setServerPort(serverPort)
-                .setDeviceId(getDeviceId(context))
+                .setDeviceId(deviceId)
                 .setClientVersion(BuildConfig.VERSION_NAME)
                 .setLogEnabled(BuildConfig.DEBUG)
                 //.setSessionStorageDir(MainActivity.class.getResource("/").getFile())
@@ -63,6 +64,7 @@ public class InitPush implements ClientListener{
         ClientConfig.I.setClientListener(this);
     }
 
+    @Deprecated
     public String getDeviceId(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Activity.TELEPHONY_SERVICE);
         String deviceId = tm.getDeviceId();

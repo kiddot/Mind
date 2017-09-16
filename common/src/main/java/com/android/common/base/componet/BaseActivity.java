@@ -1,22 +1,34 @@
 package com.android.common.base.componet;
 
+import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.android.common.R;
 import com.android.common.base.mvp.BaseMvpPresenter;
 import com.android.common.base.thread.ThreadPoolConst;
 import com.android.common.base.thread.ThreadPoolManager;
 import com.android.common.base.util.DialogFragmentHelper;
 import com.android.common.base.util.HandleUtil;
 import com.android.common.base.util.Toastor;
+import com.android.common.manager.UserManager;
+import com.android.common.push.InitPush;
+import com.android.common.push.Notifications;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
 import static com.android.common.BaseApplication.getContext;
@@ -30,6 +42,7 @@ public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompat
     protected static Executor sWORKExecutor = ThreadPoolManager.getInstance().getThreadPool(ThreadPoolConst.THREAD_TYPE_WORK);
     private Toastor mToast;
     private DialogFragment mLoadingDialog;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,6 +112,64 @@ public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompat
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+
+    //1.如何让调用者知道权限是否申请成功    回调
+    //2.如果不是在Activity中调用，所需的上下文怎么处理   可以通过让所有的创建的Activity都
+    //  存到一个集合当中，取其栈顶的Activity作为上下文
+    private PermissionListener mListener;
+
+    protected void requestRuntimePermission(String[] permission,
+                                          PermissionListener permissionListener){
+        //传过来的回调监听
+        mListener = permissionListener;
+
+        ArrayList<String> list = new ArrayList<>();
+        for (String per:permission) {
+            //如果当前的这个权限没有被申请
+            if(ContextCompat.checkSelfPermission(this,per)!= PackageManager.PERMISSION_GRANTED){
+                //添加到list集合当中
+                list.add(per);
+            }
+        }
+
+        //判断list集合是否为空，不为空则申请权限
+        if(!list.isEmpty()){
+            ActivityCompat.requestPermissions(this,list.toArray(new String[list.size()]),1);
+        }else{
+            Toast.makeText(this, "所有的权限都已经通过了！", Toast.LENGTH_SHORT).show();
+            //权限通过的回调方法
+            mListener.onGranted();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            //此处判断的是上方的标记“1”
+            case 1:
+                if(grantResults.length>0){
+                    ArrayList<String> list=new ArrayList<>();
+                    for (int i = 0; i < grantResults.length; i++) {
+                        int grantResult=grantResults[i];
+                        String permission=permissions[i];
+                        if(grantResult!=PackageManager.PERMISSION_GRANTED){
+                            list.add(permission);
+                        }
+                    }
+                    //判断所有的权限是否都通过了
+                    if(!list.isEmpty()){
+                        mListener.onDenied(list);
+                    }else{
+                        mListener.onGranted();
+                    }
+                }
+                break;
+            default:
+                break;
+        }
     }
 
 }

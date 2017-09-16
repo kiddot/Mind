@@ -42,7 +42,7 @@ public class BaseApplication extends Application {
         mBaseApplication = this;
         initOkHttp();
         initARouter();
-        initPush();
+        //initPush();
     }
 
     private void initARouter() {
