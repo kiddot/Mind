@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.alexvasilkov.android.commons.ui.Views;
 import com.android.common.base.componet.BaseActivity;
+import com.android.common.base.componet.BaseMvpActivity;
+import com.android.common.base.mvp.BaseMvpPresenter;
 import com.android.common.bean.Team;
 import com.android.common.dao.AppDaoManager;
 import com.android.common.manager.UserManager;
@@ -29,24 +31,13 @@ import me.james.biuedittext.BiuEditText;
  * Created by kiddo on 17-9-10.
  */
 
-public class CreateTeamActivity extends BaseActivity {
+public class CreateTeamActivity extends BaseMvpActivity<CreatePresenter> implements CreateContract.View {
     BiuEditText createEtName;
     BiuEditText createEtDescription;
 
     public static void startActivity(Context context){
         Intent intent = new Intent(context, CreateTeamActivity.class);
         context.startActivity(intent);
-    }
-
-
-    @Override
-    protected int getContentViewId() {
-        return R.layout.activity_create;
-    }
-
-    @Override
-    protected void init(Bundle savedInstanceState) {
-
     }
 
     @Override
@@ -56,15 +47,35 @@ public class CreateTeamActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
+    @Override
+    protected int getContentViewId() {
+        return R.layout.activity_create;
+    }
+
     public void create(View view) {
+        getPresenter().create();
+        getPresenter().uploadTeamInfo(null, String.valueOf(R.drawable.starry_night));
+        finish();
+    }
+
+    @Override
+    public String getTeamName() {
+        return createEtName.getText().toString().trim();
+    }
+
+    @Override
+    public String getDescription() {
+        return createEtDescription.getText().toString().trim();
+    }
+
+    @Override
+    protected void init(CreatePresenter presenter, Bundle savedInstanceState) {
         createEtName = Views.find(this, R.id.create_et_name);
         createEtDescription = Views.find(this, R.id.create_et_description);
-        String teamName = createEtName.getText().toString().trim();
-        String description = createEtDescription.getText().toString().trim();
-        int imageId = R.drawable.starry_night;
-        Team team = new Team(imageId, teamName, description, null);
-        EventBus.getDefault().post(new CreateTeamEvent(team));
-        AppDaoManager.get(UserManager.getInstance(this).getUserName()).insert(team);
-        finish();
+    }
+
+    @Override
+    protected CreatePresenter onCreatePresenter() {
+        return new CreatePresenter(this, this);
     }
 }
