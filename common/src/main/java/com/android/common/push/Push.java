@@ -137,6 +137,7 @@ public class Push {
      */
     public void startPush() {
         if (hasInit()) {
+            Log.d(TAG, "startPush: hasInit()" + hasInit());
             ctx.startService(new Intent(ctx, PushService.class));
         }
     }
@@ -184,6 +185,7 @@ public class Push {
      */
     public void bindAccount(String userId, String tags, String alias) {
         if (hasInit()) {
+            Log.d(TAG, "bindAccount: " + hasInit() + hasStarted());
             sp.edit().putString(SP_KEY_AT, userId).apply();
             sp.edit().putString(SP_KEY_TG, tags).apply();
             if (hasStarted() && client.isRunning()) {

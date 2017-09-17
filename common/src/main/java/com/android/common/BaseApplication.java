@@ -62,18 +62,18 @@ public class BaseApplication extends Application {
         OkHttpUtils.initClient(okHttpClient);
     }
 
-    private void initPush(){
-        Log.d(TAG, "initPush: ");
-        Notifications.I.init(this.getApplicationContext());
-        Notifications.I.setSmallIcon(R.drawable.fab_add);
-        Notifications.I.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.fab_add));
-        String userName = UserManager.getInstance(this).getUserName();
-        if (userName == null){
-            userName = "kiddo";
-        }
-        InitPush.getInstance().initPush(this, IP, userName);
-        InitPush.getInstance().startPush(this);
-        InitPush.getInstance().bindUser(userName);
-    }
+//    private void initPush(){
+//        Log.d(TAG, "initPush: ");
+//        Notifications.I.init(this.getApplicationContext());
+//        Notifications.I.setSmallIcon(R.drawable.fab_add);
+//        Notifications.I.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.fab_add));
+//        String userName = UserManager.getInstance(this).getUserName();
+//        if (userName == null){
+//            userName = "kiddo";
+//        }
+//        InitPush.getInstance().initPush(this, IP, userName);
+//        InitPush.getInstance().startPush(this);
+//        InitPush.getInstance().bindUser(userName);
+//    }
 
 }

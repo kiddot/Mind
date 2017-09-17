@@ -56,23 +56,12 @@ public class InitPush implements ClientListener{
                 .setServerPort(serverPort)
                 .setDeviceId(deviceId)
                 .setClientVersion(BuildConfig.VERSION_NAME)
-                .setLogEnabled(BuildConfig.DEBUG)
+                //.setLogEnabled(true)
                 //.setSessionStorageDir(MainActivity.class.getResource("/").getFile())
                 .setEnableHttpProxy(true)
                 .setUserId(userId);
         Push.I.checkInit(context).setClientConfig(cc);
         ClientConfig.I.setClientListener(this);
-    }
-
-    @Deprecated
-    public String getDeviceId(Context context) {
-        TelephonyManager tm = (TelephonyManager) context.getSystemService(Activity.TELEPHONY_SERVICE);
-        String deviceId = tm.getDeviceId();
-        if (TextUtils.isEmpty(deviceId)) {
-            String time = Long.toString((System.currentTimeMillis() / (1000 * 60 * 60)));
-            deviceId = time + time;
-        }
-        return deviceId;
     }
 
     public void startPush(Context context) {
@@ -82,6 +71,7 @@ public class InitPush implements ClientListener{
 
     public void bindUser(String userId) {
         if (!TextUtils.isEmpty(userId)) {
+            Log.d(TAG, "bindUser: " + "mpush:" + (int) (Math.random() * 10) + "alias");
             Push.I.bindAccount(userId, "mpush:" + (int) (Math.random() * 10), "alias");
         }
     }

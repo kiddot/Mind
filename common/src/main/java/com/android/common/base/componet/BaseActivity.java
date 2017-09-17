@@ -111,7 +111,9 @@ public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompat
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        if (EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this);
+        }
     }
 
 
@@ -138,7 +140,6 @@ public abstract class BaseActivity<P extends BaseMvpPresenter> extends AppCompat
         if(!list.isEmpty()){
             ActivityCompat.requestPermissions(this,list.toArray(new String[list.size()]),1);
         }else{
-            Toast.makeText(this, "所有的权限都已经通过了！", Toast.LENGTH_SHORT).show();
             //权限通过的回调方法
             mListener.onGranted();
         }

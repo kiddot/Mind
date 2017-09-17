@@ -5,6 +5,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import com.android.common.manager.UserManager;
+
 /**
  * Created by kiddo on 17-7-11.
  */
@@ -20,6 +22,11 @@ public class PushFakeService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         startForeground(NOTIFICATION_ID, new Notification());
+        String userName = UserManager.getInstance(this).getUserName();
+        if (userName == null){
+            userName = "kiddo";
+        }
+        InitPush.getInstance().bindUser(userName);
         stopSelf();
         return super.onStartCommand(intent, flags, startId);
     }

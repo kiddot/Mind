@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.android.common.BuildConfig;
 import com.android.tph.api.Client;
@@ -55,6 +56,7 @@ public class PushService extends Service implements ClientListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         logger.d("PushService: 启动");
+        Log.d(TAG, "onStartCommand: PushService: 启动");
         ClientConfig.I.setInternalListener(this);
         if (!Push.I.hasStarted()) {
             Push.I.checkInit(this).create(this);//在这里创建client

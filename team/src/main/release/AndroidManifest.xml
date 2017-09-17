@@ -5,6 +5,7 @@
 
         <activity android:name=".team.main.TeamDetailActivity"/>
         <activity android:name=".team.create.CreateTeamActivity"/>
+        <activity android:name=".team.invite.InviteActivity"/>
 
 
     </application>
