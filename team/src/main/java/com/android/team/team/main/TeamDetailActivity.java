@@ -21,6 +21,9 @@ import com.android.common.base.componet.BaseMvpActivity;
 import com.android.common.base.componet.PermissionListener;
 import com.android.common.base.mvp.BaseMvpPresenter;
 import com.android.common.bean.Team;
+import com.android.common.dao.AppDaoManager;
+import com.android.common.dao.CommonDao;
+import com.android.common.greendao.TeamDao;
 import com.android.common.manager.UserManager;
 import com.android.common.push.InitPush;
 import com.android.common.push.Notifications;
@@ -34,6 +37,7 @@ import com.github.clans.fab.FloatingActionButton;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,10 +101,13 @@ public class TeamDetailActivity extends BaseMvpActivity implements View.OnClickL
 
     private List<Team> getTeamList() {
         teamList = new ArrayList<>();
-        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
-        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
-        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
-        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
+//        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
+//        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
+//        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
+//        teamList.add(new Team(R.drawable.starry_night, "Starry Night", "hello", "my and you"));
+        QueryBuilder<Team> queryBuilder = UserManager.getInstance(this).getDaoManager().query(Team.class);
+        List<Team> teams = queryBuilder.list();
+        teamList.addAll(teams);
         return teamList;
     }
 

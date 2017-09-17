@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.tph.api.Constants;
@@ -16,6 +17,7 @@ import org.json.JSONObject;
  */
 
 public class TPReceiver extends BroadcastReceiver {
+    private static final String TAG = "TPReceiver";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -24,7 +26,7 @@ public class TPReceiver extends BroadcastReceiver {
             int messageId = intent.getIntExtra(PushService.EXTRA_PUSH_MESSAGE_ID, 0);
             String message = new String(bytes, Constants.UTF_8);
 
-            Toast.makeText(context, "收到新的通知：" + message, Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "onReceive: " + "收到新的通知：" + message);
 
             if (messageId > 0) Push.I.ack(messageId);
 

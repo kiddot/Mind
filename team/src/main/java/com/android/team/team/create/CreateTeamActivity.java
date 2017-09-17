@@ -64,7 +64,7 @@ public class CreateTeamActivity extends BaseActivity {
         int imageId = R.drawable.starry_night;
         Team team = new Team(imageId, teamName, description, null);
         EventBus.getDefault().post(new CreateTeamEvent(team));
-        //AppDaoManager.get(UserManager.getInstance(this).getUserName()).insert(team);
+        AppDaoManager.get(UserManager.getInstance(this).getUserName()).insert(team);
         finish();
     }
 }

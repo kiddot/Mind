@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.common.base.componet.BaseActivity;
 import com.android.common.base.componet.BaseMvpActivity;
@@ -48,6 +49,8 @@ public class InviteActivity extends BaseMvpActivity<InvitePresenter> implements 
 
     public void invite(View view){
         getPresenter().sendInvite();
+        Toast.makeText(this, "已经成功添加成员~", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

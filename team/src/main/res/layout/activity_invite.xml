@@ -34,7 +34,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
-            android:text="邀请"
+            android:text="添加"
             android:onClick="invite"
             android:textColor="@color/white"
             custom:pb_colorComplete="@color/green_complete"
